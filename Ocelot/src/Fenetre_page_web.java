@@ -1,10 +1,13 @@
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -20,10 +23,13 @@ import javax.swing.JToolBar;
 
 public class Fenetre_page_web extends JFrame{
 	
+	//crï¿½ation des constantes
+	public int i = 0;
+	
 	//chargement des images
 	ImageIcon logo = new ImageIcon("images/logo.jpg");
 	
-	//Création du menu (en haut de la fenetre)
+	//Crï¿½ation du menu (en haut de la fenetre)
 	JToolBar barre_menu = new JToolBar();
 	JButton nouvelle_fenetre = new JButton(new ImageIcon("images/favoris.png"));
 	JButton	afficher_historique = new JButton(new ImageIcon("images/favoris.png"));
@@ -32,18 +38,19 @@ public class Fenetre_page_web extends JFrame{
 	JButton	ajouter_onglet = new JButton(new ImageIcon("images/favoris.png"));
 	JTabbedPane barre_onglet = new JTabbedPane();
 	
-	//Création de la barre de  navigation (en bas de la fenetre)
+	//Crï¿½ation de la barre de  navigation (en bas de la fenetre)
 	JToolBar barre_navigation = new JToolBar();
 	JTextField barre_adresse = new JTextField("google.com",50);  
-	JButton	bouton_ok = new JButton(new ImageIcon("images/favoris.png"));
-	JButton	bouton_precedent = new JButton(new ImageIcon("images/favoris.png"));
-	JButton	home = new JButton(new ImageIcon("images/favoris.png"));
-	JButton	raffraichir = new JButton(new ImageIcon("images/favoris.png"));
-	JButton	ajouter_favoris = new JButton(new ImageIcon("images/favoris.png"));
-	JButton	bouton_suivant = new JButton(new ImageIcon("images/favoris.png"));   
-	JLabel barre_statut = new JLabel("Url chargé",JLabel.CENTER);
+	JButton	bouton_ok = new JButton(new ImageIcon(new ImageIcon("images/ok.jpg").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT)));
+	JButton	bouton_precedent = new JButton(new ImageIcon(new ImageIcon("images/precedent.jpg").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT)));
 	
-	//Création des écouteurs
+	JButton	home = new JButton(new ImageIcon(new ImageIcon("images/home.jpg").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT)));
+	JButton	raffraichir = new JButton(new ImageIcon(new ImageIcon("images/rafraichir.jpg").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT)));
+	JButton	ajouter_favoris = new JButton(new ImageIcon(new ImageIcon("images/ajouter_favoris.jpg").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT)));	
+	JButton	bouton_suivant = new JButton(new ImageIcon(new ImageIcon("images/suivant.jpg").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT)));   
+	JLabel barre_statut = new JLabel("Url chargï¿½",JLabel.CENTER);
+	
+	//Crï¿½ation des ï¿½couteurs
 	private nouvelle_fenetre_listener nfListener = new nouvelle_fenetre_listener();
 	private afficher_historique_listener ahListener = new afficher_historique_listener();
 	private afficher_favoris_listener afListener = new afficher_favoris_listener();
@@ -56,7 +63,7 @@ public class Fenetre_page_web extends JFrame{
 	private ajouter_favoris_listener ajfListener = new ajouter_favoris_listener();
 	private bouton_suivant_listener bsListener = new bouton_suivant_listener();
 	
-	
+	private Dimension panelD = new Dimension(50,40);  
 	//constructeur 
 	public Fenetre_page_web() {
 		
@@ -64,6 +71,8 @@ public class Fenetre_page_web extends JFrame{
 		this.setSize(700, 500);
 	    this.setLocationRelativeTo(null);
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    
+	    
 	    
 	    //initialisation du menu
 	    this.initMenu();
@@ -89,13 +98,17 @@ public class Fenetre_page_web extends JFrame{
 		aide.addActionListener(aListener);
 		ajouter_onglet.addActionListener(aoListener);
 		
-		//Ajout des elements à la barre de menu
+		//Ajout des elements ï¿½ la barre de menu
 		barre_menu.add(nouvelle_fenetre);
 		barre_menu.add(afficher_historique);
 		barre_menu.add(afficher_favoris);
 		barre_menu.add(aide);
 		barre_menu.add(ajouter_onglet);
 		
+		//configurer la barre de menu
+		barre_menu.setFloatable(false);
+		barre_menu.setRollover(true);
+		barre_menu.setPreferredSize(panelD);
 		
 		this.getContentPane().add(barre_menu, BorderLayout.NORTH);
 
@@ -126,7 +139,7 @@ public class Fenetre_page_web extends JFrame{
 		ajouter_favoris.addActionListener(ajfListener);
 		bouton_suivant.addActionListener(bsListener);
 		
-		//Ajout des elements à la barre de menu
+		//Ajout des elements ï¿½ la barre de menu
 		barre_navigation.add(barre_statut);
 		barre_navigation.add(barre_adresse);
 		barre_navigation.add(bouton_ok);
@@ -136,12 +149,18 @@ public class Fenetre_page_web extends JFrame{
 		barre_navigation.add(ajouter_favoris);
 		barre_navigation.add(bouton_suivant);
 		
+		//configurer la barre de navigation
+		barre_navigation.setFloatable(false);
+		barre_navigation.setRollover(true);
+		barre_navigation.setPreferredSize(panelD);
 		this.getContentPane().add(barre_navigation, BorderLayout.SOUTH);
 	}
 	
 	
 	 class nouvelle_fenetre_listener implements ActionListener{
 		    public void actionPerformed(ActionEvent e) {
+		    	//permet la crï¿½ation d'une fenetre du navigateur 
+			    Fenetre_page_web fen = new Fenetre_page_web();
 		    	
 		    }
 		    
@@ -171,6 +190,9 @@ public class Fenetre_page_web extends JFrame{
 	 class ajouter_onglet_listener implements ActionListener{
 		    public void actionPerformed(ActionEvent e) {
 		    	
+		    	i++;
+		    	JPanel panel_i= new JPanel();
+		    	barre_onglet.addTab("Onglet "+(i),panel_i);
 		    }
 		    
 	 }
