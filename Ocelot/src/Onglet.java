@@ -15,4 +15,11 @@ public class Onglet {
     public Page_Web pageActuelle(){
     	return(this.historique_local.pageActuelle());
     }
+    
+    /*
+     * Renvoit le titre de la page actuelle
+     */
+    public String getTitre(){
+    	return this.historique_local.pageActuelle().getTitre();
+    }
 }
