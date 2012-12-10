@@ -1,5 +1,7 @@
 public class Paragraphe extends Element{
-	public Paragraphe(int largeur, int hauteur, int x, int y){
+	private int marge;
+	public Paragraphe(int largeur, int hauteur, int x, int y, int marge){
 		super(largeur, hauteur, x, y);
+		this.marge = marge;
 	}
 }
