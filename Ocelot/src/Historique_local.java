@@ -25,7 +25,15 @@ public class Historique_local {
      * @param p page web à ajouter
      */
     public void ajouterPage(Page_Web p){
-    	this.pages_web.add(p);
+    	if(fin()) { // si on est sur la dernière page de l'historique
+    		pages_web.add(p);
+    	} else { // si on se trouve à l'interieur de l'historique
+    		// amputation de l'historique
+    		pages_web = (LinkedList<Page_Web>) pages_web.subList(0, indice_page_actuelle+1);
+    		// ajout de la nouvelle page sur le moignon
+    		pages_web.add(p);
+    	}
+    	indice_page_actuelle++;
     }
     
     /*
@@ -33,7 +41,9 @@ public class Historique_local {
      * et renvoit la nouvelle page actuelle
      */
     public Page_Web pagePrecedente(){
-    	this.indice_page_actuelle--;
+    	if(!debut()){
+    		this.indice_page_actuelle--;
+    	}
     	return(pageActuelle());
     }
     
@@ -42,7 +52,9 @@ public class Historique_local {
      * et renvoit la nouvelle page actuelle
      */
     public Page_Web pageSuivante(){
-    	this.indice_page_actuelle++;
+    	if(!fin()) {
+    		this.indice_page_actuelle++;
+    	}
     	return(pageActuelle());
     }
     

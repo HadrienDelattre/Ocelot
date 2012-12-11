@@ -3,7 +3,7 @@ import java.util.ListIterator;
 
 public class Historique_global {
 	private LinkedList<URL> urls;
-	
+
 	public Historique_global(){
 		this.urls = new LinkedList<URL>();
 	}
@@ -26,5 +26,9 @@ public class Historique_global {
 		{
 			urls.add(u);
 		}
+	}
+	
+	public LinkedList<URL> getUrls() {
+		return urls;
 	}
 }
