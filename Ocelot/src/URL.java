@@ -26,4 +26,14 @@ public class URL {
 	public int getStatut() {
 		return statut;
 	}
+
+	/*
+	 * Met une URL à jour en se servant d'un nouvel exemplaire
+	 * de l'url comme modèle
+	 * @param u nouvelle url
+	 */
+	public void update(URL u) {
+		this.date = u.getDate();
+		// this.titre = u.getTitre(); ? 
+	}
 }
