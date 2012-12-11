@@ -1,6 +1,5 @@
 import java.util.LinkedList;
 
-
 public class Historique_local {
     private int indice_page_actuelle;
     private LinkedList<Page_Web> pages_web;
