@@ -37,4 +37,25 @@ public class Barre_onglet {
 		this.idDernierOnglet++;
 		this.indice_onglet_courant = onglets.size();
 	}
+	
+	/*
+	 * supprime un onglet
+	 */
+	public void detruireOnglet(){
+		this.onglets.remove(indice_onglet_courant);
+		if(indice_onglet_courant > onglets.size()){
+			indice_onglet_courant = onglets.size()-1;
+		}
+		String url = this.ongletCourant().pageActuelle().getUrl();
+		if(url.matches("^http")){
+			// charger_page(url)
+		} else {
+			// selectionner_page(url)
+		}
+		/* todo ;
+		 * si on veut pouvoir charger et selectionner des pages,
+		 * il faut que la barre d'onglet ai une référence vers la fenetre_page_web
+		 * de la fenetre à laquelle elle est rattachée
+		 */
+	}
 }
