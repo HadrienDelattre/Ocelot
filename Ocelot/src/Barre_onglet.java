@@ -4,12 +4,12 @@ import java.util.LinkedList;
 public class Barre_onglet {
 	private LinkedList<Onglet> onglets;
 	private int indice_onglet_courant;
-	private String titre;
+	private int idDernierOnglet;
 	
 	public Barre_onglet(){
 		this.onglets = new LinkedList<Onglet>();
 		this.indice_onglet_courant = 0;
-		this.titre = "";
+		this.idDernierOnglet = 0;
 	}
 	
 	public int getIndiceOngletCourant(){
@@ -20,8 +20,21 @@ public class Barre_onglet {
 		// on pourrait faire un test ici 
 		// pour voir si l'indice est absurde
 		this.indice_onglet_courant = nouvel_indice;
-		this.titre = this.onglets.get(indice_onglet_courant).getTitre();
 	}
 	
-
+	/*
+	 * Renvoit l'onglet courant
+	 */
+	public Onglet ongletCourant(){
+		return this.onglets.get(indice_onglet_courant);
+	}
+	
+	/*
+	 * Crée un nouvel onglet et l'ajoute à la liste des onglets de la barre
+	 */
+	public void creerOnglet(Page_Web page_web){
+		this.onglets.add(new Onglet(page_web, this.idDernierOnglet));
+		this.idDernierOnglet++;
+		this.indice_onglet_courant = onglets.size();
+	}
 }
