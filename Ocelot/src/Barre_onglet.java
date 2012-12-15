@@ -1,15 +1,19 @@
 import java.util.LinkedList;
+import java.util.ListIterator;
 
 
 public class Barre_onglet {
 	private LinkedList<Onglet> onglets;
 	private int indice_onglet_courant;
 	private int idDernierOnglet;
+	private Fenetre_page_web fenetre_page_web;
 	
-	public Barre_onglet(){
+	public Barre_onglet(Fenetre_page_web fenetre_page_web){
 		this.onglets = new LinkedList<Onglet>();
 		this.indice_onglet_courant = 0;
 		this.idDernierOnglet = 0;
+		this.fenetre_page_web = fenetre_page_web;
+		
 	}
 	
 	public int getIndiceOngletCourant(){
@@ -57,5 +61,24 @@ public class Barre_onglet {
 		 * il faut que la barre d'onglet ai une référence vers la fenetre_page_web
 		 * de la fenetre à laquelle elle est rattachée
 		 */
+	}
+	
+	/*
+	 * selectionne un onglet
+	 */
+	public void selectionnerOnglet(int id_onglet){
+		int i;
+		for(i=0;i<onglets.size();i++){
+			Onglet o = onglets.get(i);
+			if(o.getId() == id_onglet){
+				this.indice_onglet_courant = i;
+			}
+		}
+		String url = this.ongletCourant().pageActuelle().getUrl();
+		if(url.matches("^http")){
+			// fenetre_page_web.charger_page(url)
+		} else {
+			// fenetre_page_web.selectionner_page(url)
+		}
 	}
 }

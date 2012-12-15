@@ -22,4 +22,8 @@ public class Onglet {
     public String getTitre(){
     	return this.historique_local.pageActuelle().getTitre();
     }
+
+	public int getId() {
+		return id_onglet;
+	}
 }
