@@ -14,6 +14,16 @@ public class URL {
     	this.statut = statut;
     }
     
+	/*
+	 * Met une URL à jour en se servant d'un nouvel exemplaire
+	 * de l'url comme modèle
+	 * @param u nouvelle url
+	 */
+	public void update(URL u) {
+		this.date = u.getDate();
+		// this.titre = u.getTitre(); ? 
+	}
+    
 	public String getUrl() {
 		return url;
 	}
@@ -27,13 +37,15 @@ public class URL {
 		return statut;
 	}
 
-	/*
-	 * Met une URL à jour en se servant d'un nouvel exemplaire
-	 * de l'url comme modèle
-	 * @param u nouvelle url
-	 */
-	public void update(URL u) {
-		this.date = u.getDate();
-		// this.titre = u.getTitre(); ? 
+	public void setTitre(String titre) {
+		this.titre = titre;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public void setStatut(int statut) {
+		this.statut = statut;
 	}
 }
