@@ -3,8 +3,8 @@ public class Onglet {
     String titre;
     int id_onglet;
     
-    public Onglet(String titre, int id_onglet){
-    	this.titre = titre;
+    public Onglet(Page_Web page_web, int id_onglet){
+    	this.titre = page_web.getTitre();
     	this.id_onglet = id_onglet;
     	this.historique_local = new Historique_local();
     }
@@ -22,4 +22,8 @@ public class Onglet {
     public String getTitre(){
     	return this.historique_local.pageActuelle().getTitre();
     }
+
+	public int getId() {
+		return id_onglet;
+	}
 }
