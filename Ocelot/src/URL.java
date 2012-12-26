@@ -26,10 +26,17 @@ public class URL {
 	public int getStatut() {
 		return statut;
 	}
+	
+	public String toString()
+	{
+		
+		String url_toString= this.getTitre()+"\t"+this.getUrl()+"\t"+this.getDate()+"\t"+ this.getStatut();
+		return url_toString;
+	}
 
 	/*
-	 * Met une URL à jour en se servant d'un nouvel exemplaire
-	 * de l'url comme modèle
+	 * Met une URL a�jour en se servant d'un nouvel exemplaire
+	 * de l'url comme modele
 	 * @param u nouvelle url
 	 */
 	public void update(URL u) {

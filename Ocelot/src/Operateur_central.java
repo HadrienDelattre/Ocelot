@@ -1,11 +1,7 @@
-import javax.swing.ImageIcon;
+
 
 
 public class Operateur_central {
-
-
-	
-
 			
 			
 	public static void main(String[] args){
