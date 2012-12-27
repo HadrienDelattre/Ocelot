@@ -13,7 +13,6 @@ public class Barre_onglet {
 		this.indice_onglet_courant = 0;
 		this.idDernierOnglet = 0;
 		this.fenetre_page_web = fenetre_page_web;
-		
 	}
 	
 	public int getIndiceOngletCourant(){

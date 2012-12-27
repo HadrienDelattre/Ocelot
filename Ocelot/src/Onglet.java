@@ -26,4 +26,11 @@ public class Onglet {
 	public int getId() {
 		return id_onglet;
 	}
+	
+	/*
+	 * Renvoit l'historique local de l'onglet
+	 */
+	public Historique_local getHistorique_local(){
+		return this.historique_local;
+	}
 }
