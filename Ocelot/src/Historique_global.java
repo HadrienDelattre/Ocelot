@@ -90,7 +90,7 @@ public class Historique_global {
 		
 		String currentLine = br.readLine();
 		while(currentLine != null) {
-			System.out.println("ligne courante"+currentLine);
+			System.out.println("ligne courante\t"+currentLine);
 			String[] url_ligne = currentLine.split("\t");
 			String titre = url_ligne[0];
 			System.out.println("titre=\t"+titre);			
@@ -98,14 +98,14 @@ public class Historique_global {
 			System.out.println("url=\t"+url);
 			
 			String date_test = url_ligne[2];
-			System.out.println("date=\t"+date_test);
+
 			// conversion de la date dans le fichier en objet date
 			Date date = new Date();			
 			try {
 				
 				DateFormat df = new SimpleDateFormat("EEE MMM dd kk:mm:ss z yyyy", Locale.ENGLISH);
 				date =  df.parse(url_ligne[2]);  
-		
+				System.out.println("date=\t"+date);
 		        } 
 			catch (Exception e) 
 			{ 
@@ -113,16 +113,8 @@ public class Historique_global {
 				e.printStackTrace(); 
 			}
 			currentLine = br.readLine();
-		/*	try {
-				date = date.;
-//					DateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
-//					date = (Date)formatter.parse(br.readLine());
-			} catch(ParseException pe) {
-				System.out.println("Erreur de lecture d'une date lors du chargement de l'historique global");
-				pe.printStackTrace();
-			}*/
 			int statut = Integer.parseInt(url_ligne[3]);
-			
+			System.out.println("statut=\t"+statut);
 			// ajout de l'URL
 			urls.add(new URL(url, titre, date, statut));
 		}
@@ -130,7 +122,7 @@ public class Historique_global {
 		
 	}
 	
-	public LinkedList<URL> getUrls() {
+	public static LinkedList<URL> getUrls() {
 		return urls;
 	}
 	

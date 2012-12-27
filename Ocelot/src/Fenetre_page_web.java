@@ -6,6 +6,9 @@ import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.text.ParseException;
+import java.util.Date;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -166,14 +169,30 @@ public class Fenetre_page_web extends JFrame{
 	 
 	 class afficher_historique_listener implements ActionListener{
 		    public void actionPerformed(ActionEvent e) {
-		    	
+		    	try {
+					Fenetre_historique_global fhg = new Fenetre_historique_global();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 		    }
 		    
 	 }
 	 
 	 class afficher_favoris_listener implements ActionListener{
 		    public void actionPerformed(ActionEvent e) {
-		    	
+		    	try {
+					Fenetre_favoris ff = new Fenetre_favoris();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 		    }
 		    
 	 }
@@ -225,7 +244,9 @@ public class Fenetre_page_web extends JFrame{
 
 	 class ajouter_favoris_listener implements ActionListener{
 		    public void actionPerformed(ActionEvent e) {
-		    	
+		    	URL url_ajoute = new URL("url ajoute","nom ajoute",new Date(),1);
+		    	Favoris.ajouterUrl(url_ajoute);
+		    	Favoris.sauver();
 		    }
 		    
 	 }
