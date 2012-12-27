@@ -17,7 +17,12 @@ public class Historique_global {
 	private LinkedList<URL> urls;
 
 	public Historique_global(){
-		this.urls = new LinkedList<URL>();
+		try {
+			charger();
+		} catch (IOException | ParseException e) {
+			this.urls = new LinkedList<URL>();
+			e.printStackTrace();
+		}
 	}
 	
 	public void ajouterUrl(URL u){

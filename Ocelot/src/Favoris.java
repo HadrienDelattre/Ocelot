@@ -9,6 +9,7 @@ public class Favoris {
 	 * Création d'une nouvelle liste de favoris vide
 	 */
 	public Favoris(){
+		// TODO autochargement des favoris
 		this.urls = new LinkedList<URL>();
 	}
 	
