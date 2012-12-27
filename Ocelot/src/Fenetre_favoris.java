@@ -6,4 +6,12 @@ public class Fenetre_favoris {
 		  this.visibilite = false;
 		  this.favoris = new Favoris();
 	  }
+	  
+	  public void activer(){
+		  this.visibilite = true;
+	  }
+	  
+	  public void desactiver(){
+		  this.visibilite = false;
+	  }
 }
