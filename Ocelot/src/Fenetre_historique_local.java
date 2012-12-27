@@ -5,7 +5,8 @@ public class Fenetre_historique_local {
 		  this.visibilite = false;
 	  }
 	  
-	  public void activer(){
+	  public void activer(Historique_local h){
+		  // gerer l'affichage de l'historique local
 		  this.visibilite = true;
 	  }
 	  
