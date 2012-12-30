@@ -32,11 +32,11 @@ public class Fenetre_page_web extends JFrame{
 	
 	//Création du menu (en haut de la fenetre)
 	JToolBar barre_menu = new JToolBar();
-	JButton nouvelle_fenetre = new JButton(new ImageIcon("images/favoris.png"));
-	JButton	afficher_historique = new JButton(new ImageIcon("images/favoris.png"));
-	JButton	afficher_favoris = new JButton(new ImageIcon("images/favoris.png"));
-	JButton	aide = new JButton(new ImageIcon("images/favoris.png"));
-	JButton	ajouter_onglet = new JButton(new ImageIcon("images/favoris.png"));
+	JButton nouvelle_fenetre = new JButton(new ImageIcon("images/nouvelle_fenetre.png"));
+	JButton	afficher_historique = new JButton(new ImageIcon("images/afficher_historique.png"));
+	JButton	afficher_favoris = new JButton(new ImageIcon("images/afficher_favoris.png"));
+	JButton	aide = new JButton(new ImageIcon("images/aide.png"));
+	JButton	ajouter_onglet = new JButton(new ImageIcon("images/ajouter_onglet.png"));
 	JTabbedPane barre_onglet = new JTabbedPane();
 	
 	//Création de la barre de  navigation (en bas de la fenetre)
