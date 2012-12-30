@@ -41,16 +41,16 @@ public class Fenetre_page_web extends JFrame{
 	//Cr�ation de la barre de  navigation (en bas de la fenetre)
 	JToolBar barre_navigation = new JToolBar();
 	JTextField barre_adresse = new JTextField("google.com",50);  
-	JButton	bouton_ok = new JButton(new ImageIcon(new ImageIcon("images/ok.jpg").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT)));
-	JButton	bouton_precedent = new JButton(new ImageIcon(new ImageIcon("images/precedent.jpg").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT)));
+	JButton	bouton_ok = new JButton(new ImageIcon(new ImageIcon("images/ok.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT)));
+	JButton	bouton_precedent = new JButton(new ImageIcon(new ImageIcon("images/precedent.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT)));
 	
-	JButton	home = new JButton(new ImageIcon(new ImageIcon("images/home.jpg").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT)));
-	JButton	raffraichir = new JButton(new ImageIcon(new ImageIcon("images/rafraichir.jpg").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT)));
-	JButton	ajouter_favoris = new JButton(new ImageIcon(new ImageIcon("images/ajouter_favoris.jpg").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT)));	
-	JButton	bouton_suivant = new JButton(new ImageIcon(new ImageIcon("images/suivant.jpg").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT)));   
-	JLabel barre_statut = new JLabel("Url charg�",JLabel.CENTER);
+	JButton	home = new JButton(new ImageIcon(new ImageIcon("images/home.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT)));
+	JButton	raffraichir = new JButton(new ImageIcon(new ImageIcon("images/rafraichir.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT)));
+	JButton	ajouter_favoris = new JButton(new ImageIcon(new ImageIcon("images/ajouter_favoris.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT)));	
+	JButton	bouton_suivant = new JButton(new ImageIcon(new ImageIcon("images/suivant.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT)));   
+	JLabel barre_statut = new JLabel("Url chargé",JLabel.CENTER);
 	
-	//Cr�ation des �couteurs
+	//Création des écouteurs
 	private nouvelle_fenetre_listener nfListener = new nouvelle_fenetre_listener();
 	private afficher_historique_listener ahListener = new afficher_historique_listener();
 	private afficher_favoris_listener afListener = new afficher_favoris_listener();
@@ -235,10 +235,6 @@ public class Fenetre_page_web extends JFrame{
 	 class bouton_suivant_listener implements ActionListener{
 		    public void actionPerformed(ActionEvent e) {
 		    	
-		    }
-		    
+		    }    
 	 }
-
-
-
 }
