@@ -3,6 +3,7 @@ import java.io.BufferedWriter;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -115,6 +116,26 @@ public class Historique_global {
 			ioe.printStackTrace();
 		}
 		
+	}
+	
+	/*
+	 * Effacer l'historique global,
+	 * aussi bien la variable que le fichier
+	 */
+	public void effacer() {
+		// effaçage des URLs
+		this.urls = new LinkedList<URL>();
+		// effaçage du fichier :
+		// on ouvre le fichier en écriture et on le referme
+		// sans rien écrire dedans.
+		String addresseSauvegarde = "historique_global.data";
+		try {
+			FileOutputStream fos = new FileOutputStream(addresseSauvegarde);
+			fos.close();
+			} catch(IOException e) {
+				System.out.println("Une erreur est survenue lors de l'effaçage du fichier l'historique global");
+				e.printStackTrace();
+			}
 	}
 	
 	public LinkedList<URL> getUrls() {
