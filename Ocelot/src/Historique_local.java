@@ -70,4 +70,11 @@ public class Historique_local {
     public boolean debut(){
     	return(indice_page_actuelle == 0);
     }
+    
+    /*
+     * Efface l'historique local
+     */
+     public void effacer(){
+     	this.pages_web = new LinkedList<Page_Web>();
+     }
 }
