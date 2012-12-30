@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -13,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.ListIterator;
+import java.util.Locale;
 
 public class Historique_global {
 	private LinkedList<URL> urls;
@@ -49,73 +51,67 @@ public class Historique_global {
 	/*
 	 * Permet de sauvegarder l'historique global dans un fichier
 	 */
-	public void sauver() {
+	public static void sauver() {
 		String addresseSauvegarde = "historique_global.data";
 		try {
 			FileWriter fw = new FileWriter(addresseSauvegarde, true);
 			BufferedWriter output = new BufferedWriter(fw);
-			
-			// écriture des urls
+
+			// Ecriture des urls
 			ListIterator<URL> urlIterator = urls.listIterator();
 			while(urlIterator.hasNext())
 			{
 				URL currentUrl = urlIterator.next();
-				// chaque url est écrit sur plusieurs lignes dans un ordre précis
-				output.write(currentUrl.getUrl());
-				output.newLine();
-				output.flush();
-				output.write(currentUrl.getTitre());
-				output.newLine();
-				output.flush();
-				output.write(currentUrl.getDate().toString());
-				output.newLine();
-				output.flush();
-				output.write(currentUrl.getStatut());
-				output.newLine();
-				output.flush();
+				output.write(currentUrl.toString()+"\n");
 			}
 			output.close();
 		} catch(IOException ioe) {
 			System.out.println("Erreur au cours de la sauvegarde de l'historique global");
 			ioe.printStackTrace();
 		}
-	}
+}
 	
 	/*
 	 * Permet de charger l'historique global depuis un fichier
 	 */
 	public void charger() throws IOException, ParseException {
 		String addresseSauvegarde = "historique_global.data";
-		FileInputStream fs = new FileInputStream(addresseSauvegarde);
-		DataInputStream in = new DataInputStream(fs);
-		InputStreamReader ir = new InputStreamReader(in);
-		BufferedReader br = new BufferedReader(ir);
-		
+		InputStream is=new FileInputStream(addresseSauvegarde);
+		InputStreamReader isr=new InputStreamReader(is);
+		BufferedReader br=new BufferedReader(isr);
+
 		// lecture du fichier
+
 		String currentLine = br.readLine();
-		try{
-			while(currentLine != null) {
-				String url = currentLine;
-				String titre = br.readLine();
-				// conversion de la date dans le fichier en objet date
-				Date date = new Date();
-				try {
-					DateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
-					date = (Date)formatter.parse(br.readLine());
-				} catch(ParseException pe) {
-					System.out.println("Erreur de lecture d'une date lors du chargement de l'historique global");
-					pe.printStackTrace();
-				}
-				int statut = Integer.parseInt(br.readLine());
-				
-				// ajout de l'URL
-				this.urls.add(new URL(url, titre, date, statut));
-			}
-		} catch (IOException ioe) {
-			System.out.println("Erreur au cours du chargement de l'historique global");
-			ioe.printStackTrace();
+		while(currentLine != null) {
+		System.out.println("ligne courante\t"+currentLine);
+		String[] url_ligne = currentLine.split("\t");
+		String titre = url_ligne[0];
+		System.out.println("titre=\t"+titre);	
+		String url = url_ligne[1];
+		System.out.println("url=\t"+url);
+
+		String date_test = url_ligne[2];
+
+		// conversion de la date dans le fichier en objet date
+		Date date = new Date();	
+		try {
+			DateFormat df = new SimpleDateFormat("EEE MMM dd kk:mm:ss z yyyy", Locale.ENGLISH);
+			date = df.parse(url_ligne[2]);
+			System.out.println("date=\t"+date);
 		}
-		
+		catch (Exception e)
+		{
+			System.out.println("Erreur de lecture d'une date lors du chargement de l'historique global");
+			e.printStackTrace();
+		}
+		currentLine = br.readLine();
+		int statut = Integer.parseInt(url_ligne[3]);
+		System.out.println("statut=\t"+statut);
+		// ajout de l'URL
+		urls.add(new URL(url, titre, date, statut));
+		}
+		br.close();
 	}
 	
 	/*
