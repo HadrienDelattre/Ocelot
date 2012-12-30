@@ -71,7 +71,6 @@ public class Favoris {
 			}
 	}
 	
-	
 	public LinkedList<URL> getUrls() {
 		return urls;
 	}
