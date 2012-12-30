@@ -133,7 +133,7 @@ public class Historique_global {
 			FileOutputStream fos = new FileOutputStream(addresseSauvegarde);
 			fos.close();
 			} catch(IOException e) {
-				System.out.println("Une erreur est survenue lors de l'effaçage du fichier l'historique global");
+				System.out.println("Une erreur est survenue lors de l'effaçage du fichier de l'historique global");
 				e.printStackTrace();
 			}
 	}

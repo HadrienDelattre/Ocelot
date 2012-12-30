@@ -1,3 +1,5 @@
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
@@ -48,7 +50,28 @@ public class Favoris {
 			this.urls.add(urlNouveau);
 		}
 	}
-
+	
+	/*
+	 * Effacer les favoris,
+	 * aussi bien la variable que le fichier
+	 */
+	public void effacer() {
+		// effaçage des URLs
+		this.urls = new LinkedList<URL>();
+		// effaçage du fichier :
+		// on ouvre le fichier en écriture et on le referme
+		// sans rien écrire dedans.
+		String addresseSauvegarde = "favoris.data";
+		try {
+			FileOutputStream fos = new FileOutputStream(addresseSauvegarde);
+			fos.close();
+			} catch(IOException e) {
+				System.out.println("Une erreur est survenue lors de l'effaçage du fichier des favoris");
+				e.printStackTrace();
+			}
+	}
+	
+	
 	public LinkedList<URL> getUrls() {
 		return urls;
 	}
