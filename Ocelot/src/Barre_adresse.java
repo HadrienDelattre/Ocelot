@@ -1,8 +1,12 @@
-public class Barre_adresse {
+import javax.swing.JTextField;
+
+@SuppressWarnings("serial")
+public class Barre_adresse extends JTextField {
 	private URL url;
 	private boolean visibilite;
 	
-	public Barre_adresse(URL u){
+	public Barre_adresse(URL u, int l){
+		super(u.getUrl(), l);
 		this.url = u;
 		this.visibilite = true;
 	}
@@ -24,9 +28,11 @@ public class Barre_adresse {
 
 	public void activer() {
 		this.visibilite = true;
+		this.setEnabled(true);
 	}
 	
 	public void desactiver() {
 		this.visibilite = false;
+		this.setEnabled(false);
 	}
 }

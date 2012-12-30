@@ -6,6 +6,7 @@ import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.Date;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -23,13 +24,13 @@ import javax.swing.JToolBar;
 
 public class Fenetre_page_web extends JFrame{
 	
-	//cr�ation des constantes
+	//création des constantes
 	public int i = 0;
 	
 	//chargement des images
 	ImageIcon logo = new ImageIcon("images/logo.jpg");
 	
-	//Cr�ation du menu (en haut de la fenetre)
+	//Création du menu (en haut de la fenetre)
 	JToolBar barre_menu = new JToolBar();
 	JButton nouvelle_fenetre = new JButton(new ImageIcon("images/favoris.png"));
 	JButton	afficher_historique = new JButton(new ImageIcon("images/favoris.png"));
@@ -38,9 +39,10 @@ public class Fenetre_page_web extends JFrame{
 	JButton	ajouter_onglet = new JButton(new ImageIcon("images/favoris.png"));
 	JTabbedPane barre_onglet = new JTabbedPane();
 	
-	//Cr�ation de la barre de  navigation (en bas de la fenetre)
+	//Création de la barre de  navigation (en bas de la fenetre)
 	JToolBar barre_navigation = new JToolBar();
-	JTextField barre_adresse = new JTextField("google.com",50);  
+	URL urlBarreAdresse = new URL("google.com", "Google", new Date(), 0);
+	Barre_adresse barre_adresse = new Barre_adresse(urlBarreAdresse,50);
 	JButton	bouton_ok = new JButton(new ImageIcon(new ImageIcon("images/ok.png").getImage().getScaledInstance(24, 24, Image.SCALE_DEFAULT)));
 	JButton	bouton_precedent = new JButton(new ImageIcon(new ImageIcon("images/precedent.png").getImage().getScaledInstance(24, 24, Image.SCALE_DEFAULT)));
 	
@@ -48,7 +50,7 @@ public class Fenetre_page_web extends JFrame{
 	JButton	raffraichir = new JButton(new ImageIcon(new ImageIcon("images/rafraichir.png").getImage().getScaledInstance(24, 24, Image.SCALE_DEFAULT)));
 	JButton	ajouter_favoris = new JButton(new ImageIcon(new ImageIcon("images/ajouter_favoris.png").getImage().getScaledInstance(24, 24, Image.SCALE_DEFAULT)));	
 	JButton	bouton_suivant = new JButton(new ImageIcon(new ImageIcon("images/suivant.png").getImage().getScaledInstance(24, 24, Image.SCALE_DEFAULT)));   
-	JLabel barre_statut = new JLabel("Url chargé",JLabel.CENTER);
+	JLabel barre_statut = new JLabel("Url chargé ",JLabel.CENTER);
 	
 	//Création des écouteurs
 	private nouvelle_fenetre_listener nfListener = new nouvelle_fenetre_listener();
